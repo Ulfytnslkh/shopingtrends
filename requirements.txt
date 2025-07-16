@@ -1,7 +1,8 @@
 numpy==1.26.4
 pandas==2.2.2
 matplotlib==3.7.1
-nltk
-streamlit
-pip==24.0
-scikit-learn
+seaborn==0.12.2
+nltk==3.8.1
+streamlit==1.35.0
+scikit-learn==1.4.2
+pickle-mixin==1.0.2
