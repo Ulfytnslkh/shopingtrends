@@ -6,13 +6,13 @@ import seaborn as sns
 
 # === Konfigurasi Dasar ===
 st.set_page_config(page_title="Dashboard Shopping Trends", layout="wide")
-st.title("🛍️ Dashboard Analisis Data Shopping Trends")
+st.title(" Dashboard Analisis Data Shopping Trends")
 
 # === Informasi Anggota Kelompok ===
-st.markdown("### 👥 Anggota Kelompok ")
+st.markdown("###  Anggota Kelompok ")
 st.markdown("""
-- 📛 Nama 1: Ulfiyatun Solekha (23.11.5708)
-- 📛 Nama 2: Laila Nuraini (23.11.5740)
+-  Nama 1: Ulfiyatun Solekha (23.11.5708)
+-  Nama 2: Laila Nuraini (23.11.5740)
 """)
 
 st.info("***Dashboard ini dirancang untuk memberikan gambaran menyeluruh mengenai perilaku belanja konsumen berdasarkan data historis yang telah dikumpulkan. Melalui eksplorasi data(EDA), pengguna dapat memahami pola-pola penting seperti distribusi usia konsumen, dominasi gender, preferensi metode pembayaran, dan karakteristik pembelian lainnya. Dengan visualisasi yang interaktif dan informatif, dashboard ini membantu dalam pengambilan keputusan strategis terkait pemasaran, segmentasi pelanggan, hingga optimalisasi layanan. Tidak hanya menyajikan data, dashboard ini juga dilengkapi dengan fitur prediksi metode pembayaran secara manual, memungkinkan pengguna mengeksplorasi kemungkinan perilaku konsumen baru berdasarkan input profil tertentu.***")
@@ -25,7 +25,7 @@ df = pickle.load(open('shopping_data.sav', 'rb'))
 sns.set_style("whitegrid")
 
 # === Statistik Ringkas ===
-st.subheader("📊 Statistik Ringkas")
+st.subheader(" Statistik Ringkas")
 col1, col2, col3 = st.columns(3)
 with col1:
     st.metric("Total Data", len(df))
@@ -44,7 +44,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     if 'Gender' in df.columns:
-        st.subheader("👨‍👩‍👧‍👦 Distribusi Gender")
+        st.subheader(" Distribusi Gender")
         fig1, ax1 = plt.subplots()
         sns.countplot(data=df, x='Gender', palette='pastel', ax=ax1)
         ax1.set_xlabel("Gender")
@@ -54,7 +54,7 @@ with col1:
 
 with col2:
     if 'Payment Method' in df.columns:
-        st.subheader("💳 Metode Pembayaran yang Digunakan")
+        st.subheader(" Metode Pembayaran yang Digunakan")
         payment_count = df['Payment Method'].value_counts()
         fig2, ax2 = plt.subplots()
         ax2.pie(payment_count, labels=payment_count.index,
@@ -68,7 +68,7 @@ col3, col4 = st.columns(2)
 
 with col3:
     if 'Age' in df.columns:
-        st.subheader("📈 Distribusi Usia Konsumen")
+        st.subheader(" Distribusi Usia Konsumen")
         fig3, ax3 = plt.subplots()
         sns.histplot(df['Age'], kde=True, bins=20, color="skyblue", ax=ax3)
         ax3.set_xlabel("Usia")
@@ -77,7 +77,7 @@ with col3:
         st.warning("***Grafik ini memperlihatkan distribusi usia para pembeli dalam dataset. Dengan menggunakan histogram, kita bisa melihat usia berapa yang paling sering melakukan transaksi belanja. Distribusi ini dapat mengarahkan bisnis untuk memahami kelompok usia mana yang paling aktif dalam kegiatan konsumsi. Misalnya, jika mayoritas konsumen berusia antara 25 hingga 35 tahun, maka kampanye pemasaran, desain produk, bahkan pendekatan komunikasi dapat disesuaikan untuk usia produktif tersebut. Hal ini krusial dalam merancang user experience dan campaign yang lebih personal dan efektif.***")
 
 with col4:
-    st.subheader("📋 Statistik Deskriptif")
+    st.subheader(" Statistik Deskriptif")
     st.dataframe(df.describe(include='all'))
     st.caption("***Tabel statistik deskriptif menyajikan ringkasan data dari seluruh variabel dalam dataset, termasuk nilai rata-rata (mean), minimum, maksimum, standar deviasi, serta jumlah data (count) untuk masing-masing kolom. Tabel ini memberikan gambaran menyeluruh mengenai karakteristik data sebelum dilakukan analisis lebih lanjut. Misalnya, dengan melihat nilai maksimum dan minimum dari 'Purchase Amount', kita bisa mengetahui rentang belanja konsumen. Sementara itu, standar deviasi pada kolom usia bisa menunjukkan apakah umur konsumen tersebar merata atau cenderung terkonsentrasi pada kelompok usia tertentu.***")
 
